@@ -88,38 +88,24 @@ class SubClientElectronicCollections(Client):
                                          response=response, data_key='electronic_collection')
         return response
     
-    def put(self, collection_id, q_params={}, body={}):
+    def put(self, collection_id=None, body=None, q_params={}, raw=False):
         """Update an electronic collection
         
         Args:
             collection_id (str):  Unique ID of the electronic collection.
-            body (dict): The update electronic collection body.
+            body (json): The updated electronic collection body.
         
         Returns:
-            Update electronic collection.
+            Updated electronic collection.
         
         """
         args = q_params.copy()
         args['apikey'] = self.cnxn_params['api_key']
-
         url = self.cnxn_params['api_uri_full']
-        if collection_id:
-            url += ("/" + str(collection_id))
-        else:
-            # include paramets specific to electronic collection
-            if int(limit) > 100:
-                limit = 100
-            elif int(limit) < 1:
-                limit = 1
-            else:
-                limit = int(limit)
-            args['limit'] = limit
-            args['body'] = body
-
-        response = self.read(url, args)
-        if collection_id:
-            return response
+        url += ("/" + str(collection_id))
             
+        response = self.update(url, args, body=body, raw=raw)
+        
         return (response)
     
 
