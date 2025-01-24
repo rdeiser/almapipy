@@ -103,6 +103,37 @@ class Client(object):
         content = self.__parse_response__(response)
 
         return content
+    
+    def update(self, url, args, body, raw=False):
+        """
+        Uses requests library to make Exlibris API Put call.
+        Returns data of type specified during init of base class.
+
+        Args:
+            url (str): Exlibris API endpoint url.
+            args (dict): Query string parameters for API call.
+            raw (bool): If true, returns raw response.
+
+        Returns:
+            JSON-esque, xml, or raw response.
+        """
+        # print(url)
+
+        # handle data format. Allow for overriding of global setting.
+        data_format = self.cnxn_params['format']
+        if 'format' not in args.keys():
+            args['format'] = data_format
+        data_format = args['format']
+
+        # Send request.
+        response = requests.put(url, params=args, json=body)
+        if raw:
+            return response
+
+        # Parse content
+        content = self.__parse_response__(response)
+
+        return content
 
     def __format_query__(self, query):
         """Converts dictionary of brief search query to a formated string.
