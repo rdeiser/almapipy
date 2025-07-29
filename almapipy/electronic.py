@@ -88,7 +88,7 @@ class SubClientElectronicCollections(Client):
                                          response=response, data_key='electronic_collection')
         return response
     
-    def put(self, collection_id=None, body=None, q_params={}, raw=False):
+    def put(self, collection_id=None, body=None, q_params={}, raw=True):
         """Update an electronic collection
         
         Args:
@@ -105,8 +105,7 @@ class SubClientElectronicCollections(Client):
         url += ("/" + str(collection_id))
             
         response = self.update(url, args, body=body, raw=raw)
-        
-        return (response)
+        return response
     
 
 
