@@ -2,3 +2,7 @@ __pycache__/
 almapipy.egg-info/
 ecollection.py
 updatecollection.py
+batchtest.py
+input/
+output/
+testing/
