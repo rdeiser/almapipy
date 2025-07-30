@@ -2,7 +2,11 @@ from almapipy import AlmaCnxn
 import subprocess
 # Alma Sandbox apikey=l8xx4adda710f8fe4ec89aae0c64a6531cf9
 
-alma = AlmaCnxn('l8xx4f74f77e487a4831b6b37a9695085c1a', data_format='json')
+<<<<<<< HEAD
+alma = AlmaCnxn('', data_format='json')
+=======
+alma = AlmaCnxn('', data_format='json')
+>>>>>>> 51590f8f991ad8ab928206037b1920bdc8c0e00f
 
 # need to create a for loop to take list of collection ids and return the json body.  If the internal_description field is null, add 'LocalOnly'.  If the internal_description field is not null, preappend internal_description with '; LocalOnly'
 
